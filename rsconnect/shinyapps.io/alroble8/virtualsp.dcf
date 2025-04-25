@@ -1,0 +1,10 @@
+name: virtualsp
+title: virtualsp
+username: alroble8
+account: alroble8
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14611190
+bundleId:
+url: https://alroble8.shinyapps.io/virtualsp/
+version: 1
