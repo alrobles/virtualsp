@@ -56,12 +56,13 @@ app_ui <- function(request) {
                         value = 0.9)
           ),
           mainPanel(
-            #h2("A Random DT"),
-            #DT::DTOutput("data_table"),
             htmltools::h2("Virtual Species"),
             shiny::plotOutput("plot"),
-            htmltools::h2("A Random Text"),
-            shiny::tableOutput("text")
+            # htmltools::h2("A Random Text"),
+            # shiny::tableOutput("text")
+            h2("A Random DT"),
+            DT::DTOutput("data_table")
+
           )
 
 

@@ -8,3 +8,5 @@ appId: 14611190
 bundleId:
 url: https://alroble8.shinyapps.io/virtualsp/
 version: 1
+asMultiple: FALSE
+asStatic: FALSE

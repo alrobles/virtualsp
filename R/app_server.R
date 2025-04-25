@@ -13,7 +13,7 @@ app_server <- function(input, output, session) {
   output$plot <- shiny::renderPlot({
 
     bio1_ts <- terra::unwrap(xsdm::cmcc_cm_bio1)
-    bio12_ts <- terra::unwrap(xsdm::cmcc_cm_bio1)
+    bio12_ts <- terra::unwrap(xsdm::cmcc_cm_bio12)
     envData <- list(bio1 = bio1_ts, bio12 = bio12_ts)
 
 
