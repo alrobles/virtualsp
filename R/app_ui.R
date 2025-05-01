@@ -70,8 +70,14 @@ app_ui <- function(request) {
               )),
             # htmltools::h2("A Random Text"),
             # shiny::tableOutput("text")
+
+            # Button
+            downloadButton("downloadData", "Download"),
+
             h2("Ocurrences random points"),
             DT::DTOutput("data_table")
+
+
 
           )
 

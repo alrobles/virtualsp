@@ -45,19 +45,27 @@ app_server <- function(input, output, session) {
     vs_presence <- terra::app(vs_plot, function(x){
       ifelse(x > 0.5, x, NA)
     })
-    df_presence <- terra::spatSample(vs_presence, 200, na.rm = TRUE, xy = TRUE)
-    df_absence <-  terra::spatSample(vs_plot, 200, na.rm = TRUE, xy = TRUE)
+    df_presence <- terra::spatSample(vs_presence, 50, na.rm = TRUE, xy = TRUE)
+    df_absence <-  terra::spatSample(vs_plot, 50, na.rm = TRUE, xy = TRUE)
     names(df_presence) <- c("longitude", "latitude", "probs")
     names(df_absence) <- c("longitude", "latitude", "probs")
-    df_presence$occurrence = rbinom(nrow(df_presence), size = 1,  prob = df_presence$probs)
-    df_absence$occurrence = rbinom(nrow(df_absence), size = 1,  prob = df_absence$probs)
+    df_presence$presence = rbinom(nrow(df_presence), size = 1,  prob = df_presence$probs)
+    df_absence$presence = rbinom(nrow(df_absence), size = 1,  prob = df_absence$probs)
     df <- rbind(df_presence, df_absence)
-    #shinipsum::random_DT(5, 5)
-
 
     #df <- df[df$occurrence == 1, ]
     df
   })
+
+  # Downloadable csv of selected dataset ----
+  output$downloadData <- downloadHandler(
+    filename = function() {
+      paste(input$dataset, ".csv", sep = "")
+    },
+    content = function(file) {
+      write.csv(vs_df_data(), file, row.names = FALSE)
+    }
+  )
 
   output$data_table  <- DT::renderDataTable(
     DT::datatable(
